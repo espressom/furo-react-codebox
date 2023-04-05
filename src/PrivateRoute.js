@@ -6,8 +6,6 @@ function PrivateRoute({ component: Component, ...rest }) {
   const { isLoading, isAuthenticated, loginWithRedirect } = useFuro();
 
   useEffect(() => {
-    console.log("isLoading :::", isLoading);
-    console.log("isAuthenticated :::", isAuthenticated);
     if (!isLoading && !isAuthenticated) {
       loginWithRedirect();
     }

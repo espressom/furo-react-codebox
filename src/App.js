@@ -2,7 +2,9 @@ import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import MyPage from "./pages/MyPage";
+import Layout from "./pages/Layout";
 import { FuroProvider, useFuro } from "furo-react";
+import "./styles.css";
 
 /*
 로그인 여부를 확인하는 컴포넌트로, 로그인이 필요한 페이지를 감싸는데 사용됩니다.
@@ -28,15 +30,17 @@ function App(props) {
     >
       <BrowserRouter>
         <Routes>
-          <Route
-            path="/mypage"
-            element={
-              <RequireAuth>
+          <Route element={<Layout />}>
+            <Route
+              path="/mypage"
+              element={
+                // <RequireAuth>
                 <MyPage />
-              </RequireAuth>
-            }
-          />
-          <Route exact path="/" element={<Home />} />
+                // </RequireAuth>
+              }
+            />
+            <Route exact path="/" element={<Home />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </FuroProvider>
